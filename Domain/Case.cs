@@ -36,5 +36,17 @@ namespace Evidence_Locker.Domain
         {
             Status = CaseStatus.Reopened;
         }
+
+        private readonly List<Evidence> evidenceList = new List<Evidence>();
+        public IReadOnlyList<Evidence> EvidenceList => evidenceList.AsReadOnly();
+
+        public void AddEvidence(Evidence evidence)
+        {
+            if (evidence.CaseId != Id)
+            {
+                throw new InvalidOperationException("Evidence does not belong to this case.");
+            }
+            evidenceList.Add(evidence);
+        }
     }
 }

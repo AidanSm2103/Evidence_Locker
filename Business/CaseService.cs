@@ -31,12 +31,22 @@ namespace Evidence_Locker.Business
             }
         }
         public void ReopenCase(int id)
+        {
+            var caseToReopen = GetCaseById(id);
+            if (caseToReopen != null)
             {
-                var caseToReopen = GetCaseById(id);
-                if (caseToReopen != null)
-                {
                     caseToReopen.Reopen();
-                }
+            }
+        }
+
+        public void AddEvidenceToCase(int caseId, Evidence evidence)
+        {
+            var caseToUpdate = GetCaseById(caseId);
+
+            if (caseToUpdate != null)
+            {
+                caseToUpdate.AddEvidence(evidence);
+            }
         }
     }
 }
