@@ -29,11 +29,21 @@ namespace Evidence_Locker.Domain
 
         public void Close()
         {
+            if (Status == CaseStatus.Closed) 
+            {
+                throw new InvalidOperationException("Case is already closed.");
+            }
+
             Status = CaseStatus.Closed;
         }
 
         public void Reopen()
         {
+            if (Status == CaseStatus.Reopened)
+            {
+                throw new InvalidOperationException("Case has already been reopened.");
+            }
+
             Status = CaseStatus.Reopened;
         }
 
