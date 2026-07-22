@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Evidence_Locker.Core/Evidence_Locker.Core.csproj" />
+  <Project Path="Evidence_Locker.Data/Evidence_Locker.Data.csproj" />
+  <Project Path="Evidence_Locker.Services/Evidence_Locker.Services.csproj" />
+  <Project Path="Evidence_Locker.Tests/Evidence_Locker.Tests.csproj" />
+  <Project Path="Evidence_Locker.UI/Evidence_Locker.UI.csproj" />
+  <Project Path="Evidence_Locker/Evidence_Locker.csproj" />
+</Solution>
