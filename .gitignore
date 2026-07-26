@@ -359,5 +359,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+# Runtime data files (case/evidence JSON generated at runtime)
+Evidence_Locker/data/
+
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
