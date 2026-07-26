@@ -4,5 +4,5 @@
   <Project Path="Evidence_Locker.Services/Evidence_Locker.Services.csproj" />
   <Project Path="Evidence_Locker.Tests/Evidence_Locker.Tests.csproj" />
   <Project Path="Evidence_Locker.UI/Evidence_Locker.UI.csproj" />
-  <Project Path="Evidence_Locker/Evidence_Locker.csproj" />
+  <Project Path="Evidence_Locker/Evidence_Locker.csproj" Id="be14ed7c-67b3-41b6-b6d4-ea6218df1d65" />
 </Solution>
