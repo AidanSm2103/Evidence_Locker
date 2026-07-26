@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Evidence_Locker.Services\Evidence_Locker.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Screens\" />
-  </ItemGroup>
-
 </Project>
