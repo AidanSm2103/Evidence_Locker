@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Evidence_Locker.Core.Interfaces;
 
+// Search and reporting screen
+// Depends only on IReportService 
+
 namespace Evidence_Locker.UI.Screens
 {
     public class ReportMenu
@@ -69,6 +72,8 @@ namespace Evidence_Locker.UI.Screens
 
         private void CasesInDateRange()
         {
+            // No InputHandler helper for dates exists yet, so this parses inline rather than looping on bad input
+            // An invalid date here silently becomes DateTime.MinValue rather than prompting the user again
             Console.Write("Start date (yyyy-MM-dd): ");
             DateTime.TryParse(Console.ReadLine(), out var start);
             Console.Write("End date (yyyy-MM-dd): ");

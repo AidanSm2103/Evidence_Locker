@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Evidence_Locker.UI.Screens;
 
+// The top-level menu loop
+// Owns the three sub-menus and routes to each based on the user's choice
+
 namespace Evidence_Locker.UI
 {
     public class MenuRenderer

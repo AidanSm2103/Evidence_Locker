@@ -7,6 +7,9 @@ using Evidence_Locker.Core.Enums;
 using Evidence_Locker.Core.Exceptions;
 using Evidence_Locker.Core.Interfaces;
 
+// Evidence management screen
+// Depends only on IEvidenceService 
+
 namespace Evidence_Locker.UI.Screens
 {
     public class EvidenceMenu
@@ -35,6 +38,7 @@ namespace Evidence_Locker.UI.Screens
 
                 try
                 {
+                    // Only EvidenceNotFoundException is caught here
                     switch (choice)
                     {
                         case 1: LogEvidence(); break;
@@ -59,6 +63,8 @@ namespace Evidence_Locker.UI.Screens
             ConsoleTheme.SubHeader("Log New Evidence");
             int caseId = InputHandler.GetInt("Case ID");
             string description = InputHandler.GetString("Description");
+
+            // Uses the generic GetEnum<T> helper, this menu builds itself automatically from whatever values EvidenceType currently has
             var type = InputHandler.GetEnum<EvidenceType>("Evidence type");
 
             var evidence = _evidenceService.LogEvidence(caseId, description, type);

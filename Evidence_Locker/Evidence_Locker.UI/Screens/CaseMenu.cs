@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Case management screen
+// Depends only on ICaseService 
+
 namespace Evidence_Locker.UI.Screens
 {
     public class CaseMenu
@@ -37,6 +40,8 @@ namespace Evidence_Locker.UI.Screens
 
                 try
                 {
+                    // One catch block for the whole menu loop
+                    // CaseService is the only thing that can throw these two exception types so catching them here keeps every action method below clean
                     switch (choice)
                     {
                         case 1: OpenNewCase(); break;
@@ -92,6 +97,7 @@ namespace Evidence_Locker.UI.Screens
         private void ViewCaseDetails()
         {
             int id = InputHandler.GetInt("Case ID");
+            // Throws if not found caught above
             var c = _caseService.GetCase(id);
 
             ConsoleTheme.SubHeader($"Case #{c.CaseId}: {c.Title}");

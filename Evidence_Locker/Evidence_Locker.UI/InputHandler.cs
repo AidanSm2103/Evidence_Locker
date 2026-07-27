@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Validated console input helpers.
+// Exists so every screen doesn't reimplement its own retry loop, that logic lives here once
+
 namespace Evidence_Locker.UI
 {
     public static class InputHandler
@@ -16,6 +19,7 @@ namespace Evidence_Locker.UI
             return Console.ReadLine()?.Trim() ?? string.Empty;
         }
 
+        // Loops forever until a valid int is entered 
         public static int GetInt(string prompt)
         {
             while (true)
@@ -58,6 +62,7 @@ namespace Evidence_Locker.UI
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\nPress any key to continue...");
             Console.ResetColor();
+            // true = don't echo the key pressed
             Console.ReadKey(true);
         }
     }
