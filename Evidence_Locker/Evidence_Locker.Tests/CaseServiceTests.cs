@@ -9,6 +9,9 @@ using Evidence_Locker.Services;
 using Evidence_Locker.Tests.Fakes;
 using Xunit;
 
+// Tests for the case status state machine in CaseService
+// Every test builds its own fresh CaseService + FakeCaseRepository, so tests never share state or affect each other's results
+
 namespace Evidence_Locker.Tests
 {
     public class CaseServiceTests
@@ -51,6 +54,8 @@ namespace Evidence_Locker.Tests
             var newCase = service.CreateCase("Arson - Fifth Street");
             service.CloseCase(newCase.CaseId);
 
+            // Assert.Throws requires the call inside a lambda so it can actually execute the method and catch the exception itself 
+            // Calling CloseCase directly here would just throw and fail the test rather than test anything
             Assert.Throws<InvalidCaseTransitionException>(
                 () => service.CloseCase(newCase.CaseId));
         }

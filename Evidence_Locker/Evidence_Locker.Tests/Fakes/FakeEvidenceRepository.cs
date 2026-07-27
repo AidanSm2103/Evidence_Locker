@@ -5,6 +5,9 @@ using System.Text;
 using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 
+// In-memory stand-in for IEvidenceRepository
+// Lets EvidenceServiceTests run without ever touching a real evidence.json file
+
 namespace Evidence_Locker.Tests.Fakes
 {
     public class FakeEvidenceRepository : IEvidenceRepository

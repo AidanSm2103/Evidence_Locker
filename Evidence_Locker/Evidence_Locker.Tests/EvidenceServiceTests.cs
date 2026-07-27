@@ -9,6 +9,9 @@ using Evidence_Locker.Services;
 using Evidence_Locker.Tests.Fakes;
 using Xunit;
 
+// Tests for EvidenceService
+// EvidenceService depends on bothIEvidenceRepository and ICaseRepository, since logging evidence requires confirming the parent case actually exists first
+
 namespace Evidence_Locker.Tests
 {
     public class EvidenceServiceTests
@@ -24,6 +27,8 @@ namespace Evidence_Locker.Tests
         public void LogEvidence_WhenCaseExists_AddsEvidence()
         {
             var service = CreateService(out var caseRepo, out _);
+            // A real CaseService is used here to create the case, so the case exists exactly the way it would  in production 
+
             var caseService = new CaseService(caseRepo);
             var newCase = caseService.CreateCase("Bank fraud - Meridian Trust");
 
@@ -38,6 +43,7 @@ namespace Evidence_Locker.Tests
         {
             var service = CreateService(out _, out _);
 
+            // No case was ever created — caseId 999 doesn't exist in the fake repo, which is exactly the scenario this test targets
             Assert.Throws<EvidenceNotFoundException>(
                 () => service.LogEvidence(999, "Mystery item", EvidenceType.Physical));
         }
@@ -53,6 +59,7 @@ namespace Evidence_Locker.Tests
             service.AddCustodyEntry(evidence.EvidenceId, "Officer Reyes", "Transferred to forensics lab");
             var updated = service.GetEvidence(evidence.EvidenceId);
 
+            // Confirms both that exactly one entry was added, and that its content matches what was passed in 
             Assert.Single(updated.ChainOfCustody);
             Assert.Equal("Officer Reyes", updated.ChainOfCustody[0].HandledBy);
         }

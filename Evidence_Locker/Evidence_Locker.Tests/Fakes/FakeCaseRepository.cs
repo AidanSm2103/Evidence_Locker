@@ -10,6 +10,9 @@ using Evidence_Locker.Core.Enums;
 using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 
+// In-memory stand-in for ICaseRepository, used only in tests
+// No file I/O — this is what lets CaseServiceTests run instantly and never touch or depend on a real cases.json file
+
 namespace Evidence_Locker.Tests.Fakes
 {
     public class FakeCaseRepository : ICaseRepository
