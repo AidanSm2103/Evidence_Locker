@@ -7,6 +7,9 @@ using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 using Evidence_Locker.Data.Context;
 
+// JSON-backed implementation of IEvidenceRepository 
+// Structurally identical to CaseRepository — same load-once/save-on-write pattern, just operating on Evidence instead of Case
+
 namespace Evidence_Locker.Data.Repositories
 {
     public class EvidenceRepository : IEvidenceRepository

@@ -8,6 +8,9 @@ using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 using Evidence_Locker.Data.Context;
 
+// JSON-backed implementation of ICaseRepository
+// Loads the entire case list into memory once, on construction, and re-saves the full list to disk on every write
+
 namespace Evidence_Locker.Data.Repositories
 {
     public class CaseRepository : ICaseRepository
@@ -26,6 +29,8 @@ namespace Evidence_Locker.Data.Repositories
 
         public IEnumerable<Case> GetAll() => _cases;
 
+        // Manually assigning the next ID here, since there's no database to auto-generate one.
+        // Not thread-safe, but fine for a single-user console app.
         public void Add(Case entity)
         {
             entity.CaseId = _cases.Any() ? _cases.Max(c => c.CaseId) + 1 : 1;
