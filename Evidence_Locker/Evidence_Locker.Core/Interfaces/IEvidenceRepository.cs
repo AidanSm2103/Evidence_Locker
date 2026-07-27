@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Evidence-specific repository contract.
+
 namespace Evidence_Locker.Core.Interfaces
 {
     public interface IEvidenceRepository : IRepository<Evidence>

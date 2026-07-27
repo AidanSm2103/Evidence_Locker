@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Represents the lifecycle state of a case.
+
 namespace Evidence_Locker.Core.Enums
 {
     public enum CaseStatus

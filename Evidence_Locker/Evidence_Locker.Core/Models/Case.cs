@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// The central entity in the system. A Case is a pure data container and holds no logic of its own  
+/// All state transition rules live in CaseService 
+
 namespace Evidence_Locker.Core.Models
 {
     public class Case

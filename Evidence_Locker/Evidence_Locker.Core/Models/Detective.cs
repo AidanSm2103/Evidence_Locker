@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Evidence_Locker.Core.Models
 {
+    // The investigating officer assigned to a case
     public class Detective : Person
     {
         public string BadgeNumber { get; set; } = string.Empty;

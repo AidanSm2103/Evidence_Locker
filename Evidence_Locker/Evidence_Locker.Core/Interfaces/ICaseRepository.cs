@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Case-specific repository contract
+
 namespace Evidence_Locker.Core.Interfaces
 {
     public interface ICaseRepository : IRepository<Case>

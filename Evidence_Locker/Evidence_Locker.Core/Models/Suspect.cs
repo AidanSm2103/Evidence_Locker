@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Evidence_Locker.Core.Models
 {
+    // A person suspected of involvement in a case
     public class Suspect : Person
     {
         public string? KnownAlias { get; set; }
