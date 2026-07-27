@@ -7,10 +7,15 @@ using Evidence_Locker.Core.Enums;
 using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 
+// Implements IReportService
+// Pure LINQ over ICaseRepository.GetAll()  no mutation, no state changes, just queries
+// Kept separate from CaseService so read-only reporting logic doesn't get mixed in with the state-machine/mutation logic that CaseService is responsible for
+
 namespace Evidence_Locker.Services
 {
     public class ReportService : IReportService
     {
+     
         private readonly ICaseRepository _caseRepository;
 
         public ReportService(ICaseRepository caseRepository)

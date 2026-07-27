@@ -8,6 +8,10 @@ using Evidence_Locker.Core.Exceptions;
 using Evidence_Locker.Core.Interfaces;
 using Evidence_Locker.Core.Models;
 
+// Implements IEvidenceService
+// Depends on both IEvidenceRepository and ICaseRepository the second one exists purely so LogEvidence can confirm a case actually exists before attaching evidence to it
+
+
 namespace Evidence_Locker.Services
 {
     public class EvidenceService : IEvidenceService
@@ -23,8 +27,7 @@ namespace Evidence_Locker.Services
 
         public Evidence LogEvidence(int caseId, string description, EvidenceType type)
         {
-            // Validate the case actually exists before attaching evidence to it —
-            // this is the kind of check a bare repository has no business making.
+            // Validate the case actually exists before attaching evidence to it
             var parentCase = _caseRepository.GetById(caseId);
             if (parentCase is null)
                 throw new EvidenceNotFoundException($"Cannot log evidence: case {caseId} does not exist.");
@@ -72,7 +75,8 @@ namespace Evidence_Locker.Services
         }
 
         public void DeleteEvidence(int evidenceId)
-        { 
+        {
+            // Confirms it exists before deleting
             GetEvidence(evidenceId);
             _evidenceRepository.Delete(evidenceId);
         }
